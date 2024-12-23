@@ -1,0 +1,200 @@
+[
+    {
+        "id": 1,
+        "name": "Glenfiddich 12 Year Old",
+        "type": "Single Malt",
+        "region": "Speyside",
+        "age": 12,
+        "abv": 40,
+        "price": 50
+    },
+    {
+        "id": 2,
+        "name": "Macallan 18 Year Old",
+        "type": "Single Malt",
+        "region": "Speyside",
+        "age": 18,
+        "abv": 43,
+        "price": 300
+    },
+    {
+        "id": 3,
+        "name": "Lagavulin 16 Year Old",
+        "type": "Single Malt",
+        "region": "Islay",
+        "age": 16,
+        "abv": 43,
+        "price": 100
+        },
+        {
+        "id": 4,
+        "name": "Laphroaig 10 Year Old",
+        "type": "Single Malt",
+        "region": "Islay",
+        "age": 10,
+        "abv": 40,
+        "price": 60
+        },
+        {
+        "id": 5,
+        "name": "Ardbeg 10 Year Old",
+        "type": "Single Malt",
+        "region": "Islay",
+        "age": 10,
+        "abv": 46,
+        "price": 55
+        },
+        {
+        "id": 6,
+        "name": "Talisker 10 Year Old",
+        "type": "Single Malt",
+        "region": "Islands",
+        "age": 10,
+        "abv": 45.8,
+        "price": 70
+        },
+        {
+        "id": 7,
+        "name": "Highland Park 12 Year Old",
+        "type": "Single Malt",
+        "region": "Islands",
+        "age": 12,
+        "abv": 40,
+        "price": 65
+        },
+        {
+        "id": 8,
+        "name": "Glenmorangie 10 Year Old",
+        "type": "Single Malt",
+        "region": "Highland",
+        "age": 10,
+        "abv": 40,
+        "price": 45
+        },
+        {
+        "id": 9,
+        "name": "Aberlour 12 Year Old",
+        "type": "Single Malt",
+        "region": "Speyside",
+        "age": 12,
+        "abv": 43,
+        "price": 55
+        },
+        {
+        "id": 10,
+        "name": "Oban 14 Year Old",
+        "type": "Single Malt",
+        "region": "Highland",
+        "age": 14,
+        "abv": 43,
+        "price": 85
+        },
+        {
+        "id": 11,
+        "name": "Glenlivet 12 Year Old",
+        "type": "Single Malt",
+        "region": "Speyside",
+        "age": 12,
+        "abv": 40,
+        "price": 50
+        },
+        {
+        "id": 12,
+        "name": "Balvenie DoubleWood 12 Year Old",
+        "type": "Single Malt",
+        "region": "Speyside",
+        "age": 12,
+        "abv": 40,
+        "price": 65
+        },
+        {
+        "id": 13,
+        "name": "GlenDronach 12 Year Old",
+        "type": "Single Malt",
+        "region": "Highland",
+        "age": 12,
+        "abv": 43,
+        "price": 60
+        },
+        {
+        "id": 14,
+        "name": "Springbank 10 Year Old",
+        "type": "Single Malt",
+        "region": "Campbeltown",
+        "age": 10,
+        "abv": 46,
+        "price": 70
+        },
+        {
+        "id": 15,
+        "name": "Glenfarclas 12 Year Old",
+        "type": "Single Malt",
+        "region": "Speyside",
+        "age": 12,
+        "abv": 43,
+        "price": 55
+        },
+        {
+        "id": 16,
+        "name": "Old Pulteney 12 Year Old",
+        "type": "Single Malt",
+        "region": "Highland",
+        "age": 12,
+        "abv": 40,
+        "price": 50
+        },
+        {
+        "id": 17,
+        "name": "Glen Grant 10 Year Old",
+        "type": "Single Malt",
+        "region": "Speyside",
+        "age": 10,
+        "abv": 40,
+        "price": 45
+        },
+        {
+        "id": 18,
+        "name": "Glenkinchie 12 Year Old",
+        "type": "Single Malt",
+        "region": "Lowland",
+        "age": 12,
+        "abv": 43,
+        "price": 60
+        },
+        {
+        "id": 19,
+        "name": "Auchentoshan 12 Year Old",
+        "type": "Single Malt",
+        "region": "Lowland",
+        "age": 12,
+        "abv": 40,
+        "price": 55
+        },
+        {
+        "id": 20,
+        "name": "BenRiach 10 Year Old",
+        "type": "Single Malt",
+        "region": "Speyside",
+        "age": 10,
+        "abv": 43,
+        "price": 50
+        },
+        {
+        "id": 21,
+        "name": "Glen Scotia 15 Year Old",
+        "type": "Single Malt",
+        "region": "Campbeltown",
+        "age": 15,
+        "abv": 46,
+        "price": 80
+        },
+        {
+        "id": 22,
+        "name": "Tamdhu 12 Year Old",
+        "type": "Single Malt",
+        "region": "Speyside",
+        "age": 12,
+        "abv": 43,
+        "price": 55
+            }
+        ]
