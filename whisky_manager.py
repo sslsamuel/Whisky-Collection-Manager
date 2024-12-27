@@ -10,18 +10,16 @@ class WhiskyManager:
             with open(self.db_path, 'r') as file:
                 self.data = json.load(file)
         except FileNotFoundError:
-            self.data = {"bottles": []}
+            self.data = {[]}
+        print(len(self.data))
 
     def save_data(self):
         with open(self.db_path, 'w') as file:
             json.dump(self.data, file, indent=4)
 
     def search_bottles(self, query):
-        return [b for b in self.data["bottles"] if query.lower() in b["name"].lower()]
+        return [b for b in self.data if query.lower() in b["name"].lower()]
 
-    def add_bottle(self, bottle):
-        self.data["bottles"].append(bottle.to_dict())
-        self.save_data()
 
 class Bottle:
     def __init__(self, name, age, price, distillery):
@@ -53,3 +51,5 @@ class User:
 
     def add_to_wishlist(self, bottle):
         self.wishlist.append(bottle)
+
+

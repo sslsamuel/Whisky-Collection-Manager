@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 from whisky_manager import WhiskyManager
-print(55555)
 app = Flask(__name__)
 
 whisky_manager = WhiskyManager('database.json')
