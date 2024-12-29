@@ -21,6 +21,8 @@ class WhiskyManager:
         return [b for b in self.data if query.lower() in b["name"].lower()]
 
 
+
+# not implemented yet
 class Bottle:
     def __init__(self, name, age, price, distillery):
         self.name = name
@@ -39,6 +41,7 @@ class Bottle:
             "price": self.price,
         }
 
+# not implemented yet
 class User:
     def __init__(self, username, password):
         self.username = username
