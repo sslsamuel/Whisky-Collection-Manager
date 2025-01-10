@@ -8,7 +8,8 @@
         "abv": 46,
         "price": 55,
         "image_url": "https://findlayswine.co.uk/2405-large_default/ardbeg-10-year-old-70cl.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 2,
@@ -19,7 +20,8 @@
         "abv": 46,
         "price": 800,
         "image_url": "https://img.thewhiskyexchange.com/700/abgdlp1975v2.jpg?v=202407241",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 3,
@@ -30,7 +32,8 @@
         "abv": 51.6,
         "price": 120,
         "image_url": "https://img.thewhiskyexchange.com/700/abgob.non43.jpg?v=202407241",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 4,
@@ -41,7 +44,8 @@
         "abv": 53.8,
         "price": 200,
         "image_url": "https://www.oldandrarewhisky.co.uk/cdn/shop/files/ardbeg-supernova-SN19-1.1_700x700.jpg?v=1689765834",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 5,
@@ -52,7 +56,8 @@
         "abv": 46.2,
         "price": 250,
         "image_url": "https://regalwhisky.com/cdn/shop/products/main_2608_Ardbeg-19-Year-Old-Traigh-Bhan-Batch.jpg?v=1677084965&width=500",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 6,
@@ -63,7 +68,8 @@
         "abv": 40,
         "price": 60,
         "image_url": "https://www.houseofmalt.co.uk/wp-content/uploads/2018/06/Balvenie-12-Year-Old-Doublewood-Speyside-Single-Malt-Whisky.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 7,
@@ -74,7 +80,8 @@
         "abv": 52.5,
         "price": 350,
         "image_url": "https://regalwhisky.com/cdn/shop/products/main_2604_Balvenie-Tun-1509-Batch-7.jpg?v=1677085347&width=500",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 8,
@@ -85,7 +92,8 @@
         "abv": 44.3,
         "price": 25000,
         "image_url": "https://img.thewhiskyexchange.com/700/balob.50yov6.jpg?v=202407241",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 9,
@@ -96,7 +104,8 @@
         "abv": 40,
         "price": 150,
         "image_url": "https://thechampagnecompany.com/media/catalog/product/cache/2b7510da3d69b944cb0b1b533eaff454/b/a/balvenie2021-yo.webp",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 10,
@@ -107,7 +116,8 @@
         "abv": 40,
         "price": 45,
         "image_url": "https://m.media-amazon.com/images/I/81k28xgNFoL.__AC_SX300_SY300_QL70_ML2_.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 11,
@@ -118,7 +128,8 @@
         "abv": 40,
         "price": 80,
         "image_url": "https://m.media-amazon.com/images/I/81GmWbPgYEL.__AC_SX342_SY445_QL70_ML2_.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 12,
@@ -129,7 +140,8 @@
         "abv": 40,
         "price": 120,
         "image_url": "https://www.masterofmalt.com/whiskies/glenfiddich/glenfiddich-21-year-old-gran-reserva-whisky.jpg?alt=1&w=700&h=987&b=0xFFFFFF&q=100",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 13,
@@ -140,7 +152,8 @@
         "abv": 43,
         "price": 450,
         "image_url": "https://www.thewhiskyworld.com/images/glenfiddich-30-year-old-re-imagination-of-time-p11331-18080_medium.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 14,
@@ -151,7 +164,8 @@
         "abv": 44,
         "price": 1000,
         "image_url": "https://www.thewhiskyworld.com/images/glenfiddich-40-year-old-15th-release-p5903-10550_medium.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 15,
@@ -162,7 +176,8 @@
         "abv": 44,
         "price": 25000,
         "image_url": "https://www.masterofmalt.com/whiskies/glenfiddich/glenfiddich-50-year-old-time-reimagined-whisky.jpg?alt=1&w=700&h=891&b=0xFFFFFF&q=100",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 16,
@@ -173,7 +188,8 @@
         "abv": 43,
         "price": 150,
         "image_url": "https://www.masterofmalt.com/whiskies/glenfiddich/glenfiddich-grand-cru-23-year-old-whisky.jpg?alt=1&w=700&h=868&b=0xFFFFFF&q=100",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 17,
@@ -184,7 +200,8 @@
         "abv": 43,
         "price": 1500,
         "image_url": "https://img.thewhiskyexchange.com/700/gfdob.non27.jpg?v=202407241",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 18,
@@ -195,7 +212,8 @@
         "abv": 40,
         "price": 50,
         "image_url": "https://m.media-amazon.com/images/I/81-H9zc6aqL.__AC_SX300_SY300_QL70_ML2_.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 19,
@@ -206,7 +224,8 @@
         "abv": 43,
         "price": 90,
         "image_url": "https://www.masterofmalt.com/whiskies/the-glenlivet/the-glenlivet-18-year-old-whisky.jpg?alt=1&w=700&h=1011&b=0xFFFFFF&q=100",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 20,
@@ -217,7 +236,8 @@
         "abv": 43,
         "price": 120,
         "image_url": "https://www.masterofmalt.com/whiskies/the-glenlivet-archive-21-year-old-whisky.jpg?alt=1&w=700&h=905&b=0xFFFFFF&q=100",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 21,
@@ -228,7 +248,8 @@
         "abv": 43,
         "price": 300,
         "image_url": "https://img.drinksdirect.com/glenlivet-25-year-old-xxv-70cl-1834/2638/600x600/glenlivet-25-year-old-xxv-70cl-1834.webp",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 22,
@@ -239,7 +260,8 @@
         "abv": 47,
         "price": 200,
         "image_url": "https://static.whiskybase.com/storage/whiskies/4/1/197/77941-big.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 23,
@@ -250,7 +272,8 @@
         "abv": 46,
         "price": 10000,
         "image_url": "https://www.thewhiskyworld.com/images/glenlivet-1943-private-collection-40-p6848-11927_medium.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 24,
@@ -261,7 +284,8 @@
         "abv": 43,
         "price": 3000,
         "image_url": "https://img.thewhiskyexchange.com/700/glvob.1964v4.jpg?v=202407241",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 25,
@@ -272,7 +296,8 @@
         "abv": 40,
         "price": 45,
         "image_url": "https://m.media-amazon.com/images/I/81enYLsTPeL.__AC_SX300_SY300_QL70_ML2_.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 26,
@@ -283,7 +308,8 @@
         "abv": 46,
         "price": 120,
         "image_url": "https://www.masterofmalt.com/whiskies/glenmorangie-signet-whisky.jpg?alt=1&w=623&h=1024&b=0xFFFFFF&q=100",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 27,
@@ -294,7 +320,8 @@
         "abv": 46,
         "price": 3500,
         "image_url": "https://www.thewhiskyworld.com/images/glenmorangie-pride-1978-baccarat-decanter-p6068-10778_medium.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 28,
@@ -305,7 +332,8 @@
         "abv": 46,
         "price": 90,
         "image_url": "https://findlayswine.co.uk/2197-thickbox_default/glenmorangie-18yo-70cl.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 29,
@@ -316,7 +344,8 @@
         "abv": 40,
         "price": 25,
         "image_url": "https://m.media-amazon.com/images/I/51ULondqwtL.__AC_SX300_SY300_QL70_ML2_.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 30,
@@ -327,7 +356,8 @@
         "abv": 40,
         "price": 40,
         "image_url": "https://ecom-su-static-prod.wtrecom.com/images/products/11/LN_611972_BP_11.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 31,
@@ -338,7 +368,8 @@
         "abv": 47,
         "price": 50,
         "image_url": "https://m.media-amazon.com/images/I/71a1efBdfpL.__AC_SX342_SY445_QL70_ML2_.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 32,
@@ -349,7 +380,8 @@
         "abv": 62,
         "price": 70,
         "image_url": "https://images.squarespace-cdn.com/content/v1/51379b83e4b02119d184b2a2/4d824fbc-cb84-45ba-818e-902662f30fe0/Jack-Daniels-Single-Barrel-Barrel-Proof-Rye.jpg?format=1500w",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 33,
@@ -360,7 +392,8 @@
         "abv": 45,
         "price": 150,
         "image_url": "https://www.masterofmalt.com/whiskies/jack-daniels/jack-daniels-sinatra-select-whiskey.jpg?alt=1&w=700&h=1002&b=0xFFFFFF&q=100",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 34,
@@ -371,7 +404,8 @@
         "abv": 35,
         "price": 30,
         "image_url": "https://www.masterofmalt.com/liqueurs/jack-daniels/jack-daniels-honey-whiskey-liqueur.jpg?alt=1&w=430&h=1024&b=0xFFFFFF&q=100",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 35,
@@ -382,7 +416,8 @@
         "abv": 40,
         "price": 100,
         "image_url": "https://m.media-amazon.com/images/I/91tAtjzNRWL._AC_SX569_.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 36,
@@ -393,7 +428,8 @@
         "abv": 50,
         "price": 60,
         "image_url": "https://www.royalmilewhiskies.com/pub/media/catalog/product/cache/b1d2c366b6f35a1aa8484b376ee9f18e/s/b/sb4582_5099873023358_1.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 37,
@@ -404,7 +440,8 @@
         "abv": 45,
         "price": 80,
         "image_url": "https://scotchgalore.com/wp-content/uploads/2023/08/027.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 38,
@@ -415,7 +452,8 @@
         "abv": 47,
         "price": 65,
         "image_url": "https://www.thebottleclub.com/cdn/shop/files/jack-daniel-s-master-distiller-1-tennessee-whiskey-70-cl-whisky-71855555477886.jpg?v=1731461693&width=720",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 39,
@@ -426,7 +464,8 @@
         "abv": 43,
         "price": 120,
         "image_url": "https://lochsofwhisky.com/media/catalog/product/mpiowebpcache/3e7ddc35ac6d0cf48b23c4286b78874d/1/3/1370-3.webp",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 40,
@@ -437,7 +476,8 @@
         "abv": 40,
         "price": 200,
         "image_url": "https://m.media-amazon.com/images/I/814TvWl50cL.__AC_SX300_SY300_QL70_ML2_.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 41,
@@ -448,7 +488,8 @@
         "abv": 40,
         "price": 350,
         "image_url": "https://www.thewhiskyworld.com/images/johnnie-walker-blue-year-of-the-dragon-chinese-new-year-2024-p14052-24339_medium.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 42,
@@ -459,7 +500,8 @@
         "abv": 40,
         "price": 400,
         "image_url": "https://www.thewhiskyworld.com/images/johnnie-walker-blue-year-of-the-tiger-chinese-new-year-2022-p10391-16844_medium.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 43,
@@ -470,7 +512,8 @@
         "abv": 40,
         "price": 380,
         "image_url": "https://www.thewhiskyworld.com/images/johnnie-walker-blue-label-year-of-the-monkey-p280-6983_medium.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 44,
@@ -481,7 +524,8 @@
         "abv": 40,
         "price": 360,
         "image_url": "https://secretbottleshop.co.uk/cdn/shop/products/7044bd85-9ec4-4655-b457-f174df646aef_700x700.jpg?v=1703249245",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 45,
@@ -492,7 +536,8 @@
         "abv": 48,
         "price": 250,
         "image_url": "https://thechampagnecompany.com/media/catalog/product/cache/2b7510da3d69b944cb0b1b533eaff454/l/a/laphroaig_25_year_old_cask_strength_2019_release_70cl.webp",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 46,
@@ -503,7 +548,8 @@
         "abv": 55.4,
         "price": 650,
         "image_url": "https://img.thewhiskyexchange.com/700/lrgob.32yo.jpg?v=202407241",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 47,
@@ -514,7 +560,8 @@
         "abv": 43,
         "price": 250,
         "image_url": "https://www.champagneking.co.uk/images/products/dig_commercial_ecomm_flat_small-mac-2022-18yo-sherry-cask-bottle&box-700ml-png_1024_x_1024_@72dpi.jpg?width=700&height=700&format=webp",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 48,
@@ -525,7 +572,8 @@
         "abv": 48,
         "price": 500,
         "image_url": "https://www.kosherwine.co.uk/images/macallan-rare-cask-black-p250-19769_medium.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     },
     {
         "id": 49,
@@ -536,6 +584,7 @@
         "abv": 43,
         "price": 100,
         "image_url": "https://www.houseofmalt.co.uk/wp-content/uploads/2022/12/Macallan-12-Year-Old-Sherry-Oak-Cask-Speyside-Single-Malt-Scotch-Whisky.jpg",
-        "note": ""
+        "note": "",
+        "rating": 0
     }
 ]
