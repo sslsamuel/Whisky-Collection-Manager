@@ -16,8 +16,8 @@ class WhiskyManager:
     #         json.dump(self.data, file, indent=4)
 
     @classmethod
-    def search_bottles(cls, query, collection=None):
-        if collection:
+    def search_bottles(cls, query, collection=False):
+        if collection != False:
             return [bottle for bottle in collection if query.lower() in bottle["name"].lower()]
         data = cls.load_data()
         return [bottle for bottle in data if query.lower() in bottle["name"].lower()]
@@ -56,25 +56,33 @@ class User:
         """
         Amend a user's collection.
         """
-
-        if add == True: # Add the bottle to the collection
-            # Avoid adding duplicate bottles
-            if bottle in user["collection"]:
-                return None # exit the function
-
-            # Add the bottle to the collection
+        # Add the bottle to the collection
+        if add == True:
             user["collection"].append(bottle)
 
-        elif add == False: # Remove the bottle from the collection
+        # Remove the bottle from the collection
+        elif add == False: 
             user["collection"] = [b for b in user["collection"] if b["id"] != bottle["id"]]
+
+        # Edit a bottle's note
+        elif type(add) == str:
+            for b in user["collection"]:
+                if b["id"] == bottle["id"]:
+                    b["note"] = add
+                    break
+
+        # Edit a bottle's rating
+        elif type(add) == int:
+            for b in user["collection"]:
+                if b["id"] == bottle["id"]:
+                    b["rating"] = add
+                    break
 
         users_data = cls.load_users()  # Load the users data
         for user_data in users_data:
             if user_data['username'] == user["username"]:
                 user_data['collection'] = user["collection"]  # Update the user's collection
         cls.save_to_json(users_data)  # Save the updated data
-
-        return None # exit the function
 
     @staticmethod
     def load_users():
