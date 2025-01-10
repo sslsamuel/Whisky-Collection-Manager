@@ -1,14 +1,128 @@
 [
     {
-        "username": "admin",
-        "password": "password"
-    },
-    {
-        "username": "123",
-        "password": "123"
-    },
-    {
-        "username": "samuel",
-        "password": "walker"
+        "username": "sam",
+        "password": "123",
+        "collection": [
+            {
+                "id": 1,
+                "name": "Ardbeg 10 Year Old",
+                "distillery": "Ardbeg",
+                "type": "Single Malt",
+                "age": 10,
+                "abv": 46,
+                "price": 55,
+                "image_url": "https://findlayswine.co.uk/2405-large_default/ardbeg-10-year-old-70cl.jpg",
+                "note": "",
+                "rating": 2
+            },
+            {
+                "id": 2,
+                "name": "Ardbeg 1975 30 Year Old",
+                "distillery": "Ardbeg",
+                "type": "Single Malt",
+                "age": 30,
+                "abv": 46,
+                "price": 800,
+                "image_url": "https://img.thewhiskyexchange.com/700/abgdlp1975v2.jpg?v=202407241",
+                "note": "",
+                "rating": 0
+            },
+            {
+                "id": 3,
+                "name": "Ardbeg Blaaack",
+                "distillery": "Ardbeg",
+                "type": "Single Malt",
+                "age": 7,
+                "abv": 51.6,
+                "price": 120,
+                "image_url": "https://img.thewhiskyexchange.com/700/abgob.non43.jpg?v=202407241",
+                "note": "",
+                "rating": 0
+            },
+            {
+                "id": 6,
+                "name": "Balvenie 12 Year Old DoubleWood",
+                "distillery": "Balvenie",
+                "type": "Single Malt",
+                "age": 12,
+                "abv": 40,
+                "price": 60,
+                "image_url": "https://www.houseofmalt.co.uk/wp-content/uploads/2018/06/Balvenie-12-Year-Old-Doublewood-Speyside-Single-Malt-Whisky.jpg",
+                "note": "",
+                "rating": 0
+            },
+            {
+                "id": 5,
+                "name": "Ardbeg 19 Year Old Traigh Bhan Batch 2",
+                "distillery": "Ardbeg",
+                "type": "Single Malt",
+                "age": 19,
+                "abv": 46.2,
+                "price": 250,
+                "image_url": "https://regalwhisky.com/cdn/shop/products/main_2608_Ardbeg-19-Year-Old-Traigh-Bhan-Batch.jpg?v=1677084965&width=500",
+                "note": "",
+                "rating": 0
+            },
+            {
+                "id": 8,
+                "name": "Balvenie 50 Year Old",
+                "distillery": "Balvenie",
+                "type": "Single Malt",
+                "age": 50,
+                "abv": 44.3,
+                "price": 25000,
+                "image_url": "https://img.thewhiskyexchange.com/700/balob.50yov6.jpg?v=202407241",
+                "note": "",
+                "rating": 0
+            },
+            {
+                "id": 9,
+                "name": "Balvenie PortWood 21 Year Old",
+                "distillery": "Balvenie",
+                "type": "Single Malt",
+                "age": 21,
+                "abv": 40,
+                "price": 150,
+                "image_url": "https://thechampagnecompany.com/media/catalog/product/cache/2b7510da3d69b944cb0b1b533eaff454/b/a/balvenie2021-yo.webp",
+                "note": "",
+                "rating": 0
+            },
+            {
+                "id": 11,
+                "name": "Glenfiddich 18 Year Old",
+                "distillery": "Glenfiddich",
+                "type": "Single Malt",
+                "age": 18,
+                "abv": 40,
+                "price": 80,
+                "image_url": "https://m.media-amazon.com/images/I/81GmWbPgYEL.__AC_SX342_SY445_QL70_ML2_.jpg",
+                "note": "",
+                "rating": 0
+            },
+            {
+                "id": 10,
+                "name": "Glenfiddich 12 Year Old",
+                "distillery": "Glenfiddich",
+                "type": "Single Malt",
+                "age": 12,
+                "abv": 40,
+                "price": 45,
+                "image_url": "https://m.media-amazon.com/images/I/81k28xgNFoL.__AC_SX300_SY300_QL70_ML2_.jpg",
+                "note": "",
+                "rating": 0
+            },
+            {
+                "id": 12,
+                "name": "Glenfiddich 21 Year Old Rum Cask Finish",
+                "distillery": "Glenfiddich",
+                "type": "Single Malt",
+                "age": 21,
+                "abv": 40,
+                "price": 120,
+                "image_url": "https://www.masterofmalt.com/whiskies/glenfiddich/glenfiddich-21-year-old-gran-reserva-whisky.jpg?alt=1&w=700&h=987&b=0xFFFFFF&q=100",
+                "note": "",
+                "rating": 0
+            }
+        ]
     }
 ]

@@ -18,28 +18,29 @@
             padding: 15px;
             margin-bottom: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative; /* To position the flash message */
         }
         .bottle-card img {
             max-width: 100%;
             border-radius: 8px;
         }
-        .bottle-card h5{
-            height: 3em; /* Fixed height for the title area */
-            line-height: 1.5em; /* Adjust line spacing */
-            margin-top: 1em; /* Add vertical space between image and title */
+        .bottle-card h5 {
+            height: 3em;
+            line-height: 1.5em;
+            margin-top: 1em;
         }
         .bottle-info {
             margin-top: 10px;
         }
         img {
             height: 300px;
-            object-fit: contain; /* Preserve the aspect ratio */
-            margin: 0 auto; /* Center the images horizontally */
-            display: block; /* Removes any inline element spacing */  
-        }  
+            object-fit: contain;
+            margin: 0 auto;
+            display: block;
+        }
         .top-bar {
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
@@ -51,30 +52,76 @@
             border-radius: 5px;
             padding: 5px 10px;
         }
+        .btn-custom {
+            margin-right: auto; /* Push "My Collection" button to the left */
+        }
+        .top-bar-right {
+            display: flex;
+            flex-direction: column; /* Stack username and logout vertically */
+            align-items: flex-end; /* Align to the right */
+        }
+        .flash-message {
+            display: none; /* Hide the flash message by default */
+            position: absolute; /* Position the flash message relative to the bottle card */
+            top: -20px; /* Move the flash message up above the image */
+            left: 0;
+            width: 100%; /* Matches the full width of the bottle card */
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+            z-index: 10; /* Ensure the flash message is on top */
+            text-align: center;
+            animation: fade-in-out 2.5s ease-in-out; /* Animation for fade in and out */
+        }
+
+        .flash-message.success {
+            background-color: #28a745;
+        }
+
+        .flash-message.error {
+            background-color: #dc3545;
+        }
+        /* Keyframes for fade in and out animation */
+        @keyframes fade-in-out {
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Top bar with username and logout -->
-        <div class="top-bar d-flex flex-column align-items-end">
-        {% if session['username'] %}
-            <span class="username mb-2" >
-                Hello, {{ session['username'] }}
-            </span>
-            <a href="/logout" class="btn btn-danger">Logout</a>
-        {% endif %}
+        <!-- Top bar with "My Collection" button on the left and username/logout on the right -->
+        <div class="top-bar">
+            <a href="{{ url_for('my_collection') }}" class="btn btn-primary btn-custom">My Collection</a>
+            {% if session['username'] %}
+                <div class="top-bar-right">
+                    <span class="username mb-2">
+                        Hello, {{ session['username'] }}
+                    </span>
+                    <a href="/logout" class="btn btn-danger">Logout</a>
+                </div>
+            {% endif %}
         </div>
 
         <h1 class="text-center">Whisky Collection</h1>
         <form method="POST" class="mb-4">
-            <input type="text" name="search" class="form-control" placeholder="Search for a whisky...">
+            <input type="text" name="search" class="form-control" placeholder="Search for a whisky..." value="{{ query }}">
             <button type="submit" class="btn btn-primary mt-2">Search</button>
         </form>
 
         <div class="row">
             {% for bottle in results %}
             <div class="col-md-4">
-                <div class="bottle-card">
+                <div class="bottle-card" id="bottle-card-{{ bottle.id }}">
+                    <!-- Flash messages will be here (JS creates them at the bottom of the card and CSS moves it up here) -->
+
+                    
+                
+
                     <img src="{{ bottle.image_url }}" alt="Image of {{ bottle.name }}">
                     <h5>{{ bottle.name }}</h5>
                     <div class="bottle-info">
@@ -82,12 +129,55 @@
                         <p><strong>Type:</strong> {{ bottle.type }}</p>
                         <p><strong>Age:</strong> {{ bottle.age }} years</p>
                         <p><strong>ABV:</strong> {{ bottle.abv }}%</p>
-                        <p><strong>Price:</strong> ${{ bottle.price }}</p>
+                        <p><strong>Price:</strong> £{{ bottle.price }}</p>
+                        <form class="add-bottle-form" action="/add_to_collection/{{ bottle.id }}" method="POST">
+                            <button type="submit" class="btn btn-success">Add to Collection</button>
+                        </form>
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
+    
+    <!-- JavaScript for handling form submission and flash messages -->
+    <script>
+        document.querySelectorAll('.add-bottle-form').forEach(form => {
+            form.addEventListener('submit', async event => {
+                event.preventDefault(); // Prevent default form submission
+                
+                const bottleId = form.action.split('/').pop(); // Extract bottle ID
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                });
+    
+                if (response.ok) {
+                    // Parse the JSON response
+                    const data = await response.json();
+                    
+                    // Create the flash message element
+                    const flashMessage = document.createElement('div');
+                    flashMessage.classList.add('flash-message', data.type);
+                    flashMessage.textContent = data.message;
+    
+                    // Append the flash message to the bottle card
+                    const bottleCard = document.getElementById(`bottle-card-${bottleId}`);
+                    bottleCard.appendChild(flashMessage);
+    
+                    // Show the flash message
+                    flashMessage.style.display = 'block';
+    
+                    // Hide the flash message after 2.5 seconds
+                    setTimeout(() => {
+                        flashMessage.style.display = 'none';
+                    }, 2500);
+                } else {
+                    alert('An error occurred. Please try again.');
+                }
+            });
+        });
+    </script>
+    
 </body>
 </html>
