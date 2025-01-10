@@ -63,10 +63,9 @@
         .flash-message {
             display: none; /* Hide the flash message by default */
             position: absolute; /* Position the flash message relative to the bottle card */
-            top: -20px;
+            top: -20px; /* Move the flash message up above the image */
             left: 0;
             width: 100%; /* Matches the full width of the bottle card */
-            background-color: #28a745;
             color: #ffffff;
             padding: 10px;
             border-radius: 5px;
@@ -75,6 +74,14 @@
             z-index: 10; /* Ensure the flash message is on top */
             text-align: center;
             animation: fade-in-out 2.5s ease-in-out; /* Animation for fade in and out */
+        }
+
+        .flash-message.success {
+            background-color: #28a745;
+        }
+
+        .flash-message.error {
+            background-color: #dc3545;
         }
         /* Keyframes for fade in and out animation */
         @keyframes fade-in-out {
@@ -110,9 +117,11 @@
             {% for bottle in results %}
             <div class="col-md-4">
                 <div class="bottle-card" id="bottle-card-{{ bottle.id }}">
-                    <div class="flash-message" id="flash-message-{{ bottle.id }}">
-                        {{bottle.name}} added to your collection!
-                    </div>
+                    <!-- Flash messages will be here (JS creates them at the bottom of the card and CSS moves it up here) -->
+
+                    
+                
+
                     <img src="{{ bottle.image_url }}" alt="Image of {{ bottle.name }}">
                     <h5>{{ bottle.name }}</h5>
                     <div class="bottle-info">
@@ -142,11 +151,23 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                 });
-
+    
                 if (response.ok) {
-                    const flashMessage = document.getElementById(`flash-message-${bottleId}`);
+                    // Parse the JSON response
+                    const data = await response.json();
+                    
+                    // Create the flash message element
+                    const flashMessage = document.createElement('div');
+                    flashMessage.classList.add('flash-message', data.type);
+                    flashMessage.textContent = data.message;
+    
+                    // Append the flash message to the bottle card
+                    const bottleCard = document.getElementById(`bottle-card-${bottleId}`);
+                    bottleCard.appendChild(flashMessage);
+    
+                    // Show the flash message
                     flashMessage.style.display = 'block';
-
+    
                     // Hide the flash message after 2.5 seconds
                     setTimeout(() => {
                         flashMessage.style.display = 'none';
@@ -157,5 +178,6 @@
             });
         });
     </script>
+    
 </body>
 </html>
