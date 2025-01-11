@@ -32,6 +32,13 @@ def search():
         results = WhiskyManager.search_bottles(query, user['collection'])
         return render_template('collection.html', results=results, query=query)
     
+    elif source == 'my_wishlist':
+        username = session['username']
+        users = User.load_users()
+        user = next((u for u in users if u['username'] == username), None)
+        results = WhiskyManager.search_bottles(query, user['wishlist'])
+        return render_template('wishlist.html', results=results, query=query)
+    
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -90,6 +97,16 @@ def logout():
     return redirect(url_for('login'))  # Redirect to login page after logout
 
 
+
+@app.route('/my_collection')
+def my_collection():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    
+    return redirect(url_for('search', source = 'my_collection'))
+
+
 @app.route('/add_to_collection/<bottle_id>', methods=['POST'])
 def add_to_collection(bottle_id):
     if not is_logged_in():  # If the user is not logged in, redirect to login page
@@ -135,33 +152,6 @@ def remove_from_collection(bottle_id):
     flash(f'{bottle['name']} removed from your collection.')
     return redirect(url_for('search', query='', source='my_collection'))
 
-
-@app.route('/my_collection')
-def my_collection():
-    if 'username' not in session:
-        return redirect(url_for('login'))
-
-    
-    return redirect(url_for('search', source = 'my_collection'))
-
-@app.route('/edit_note/<int:bottle_id>', methods=['POST'])
-def edit_note(bottle_id):
-    if not is_logged_in():  # If the user is not logged in, redirect to login page
-        return redirect(url_for('login'))
-
-    note = request.form.get('note')  # Get the note from the form
-
-    username = session['username']
-    users = User.load_users()
-    user = next((u for u in users if u['username'] == username), None) # dictionary object
-
-    bottle = Bottle.get_bottle_by_id(int(bottle_id))
-
-    User.amend_collection(user, bottle, note)  # Add the note to the bottle
-
-    flash(f'Note edited successfully for {bottle['name']}!', 'success')
-    return redirect(url_for('my_collection'))
-
 @app.route('/edit_rating/<int:bottle_id>', methods=['POST'])
 def edit_rating(bottle_id):
 
@@ -177,6 +167,91 @@ def edit_rating(bottle_id):
     
     flash(f'Rating edited successfully to {rating} stars for {bottle['name']}!', 'success')
     return redirect(url_for('my_collection'))
+
+
+
+@app.route('/my_wishlist')
+def my_wishlist():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    
+    return redirect(url_for('search', source = 'my_wishlist'))
+
+
+@app.route('/add_to_wishlist/<bottle_id>', methods=['POST'])
+def add_to_wishlist(bottle_id):
+    if not is_logged_in():  # If the user is not logged in, redirect to login page
+        return redirect(url_for('login'))
+    
+    username = session['username']
+    users = User.load_users()
+    user = next((u for u in users if u['username'] == username), None) # dictionary object
+
+    if user:
+        bottle = Bottle.get_bottle_by_id(int(bottle_id))
+        if not any (b['id'] == bottle['id'] for b in user['wishlist']):
+            User.amend_wishlist(user,bottle, True)
+            flash_message = f'{bottle['name']} added to your wishlist.'
+            message_type = 'success'
+        else:
+            flash_message = f'{bottle['name']} is already in your wishlist.'
+            message_type = 'error'
+
+    # Redirect back to the search page via AJAX
+    return jsonify({'message': flash_message, 'type': message_type})
+            
+
+    
+
+
+@app.route('/remove_from_wishlist/<int:bottle_id>', methods=['POST'])
+def remove_from_wishlist(bottle_id):
+    if not is_logged_in():  # If the user is not logged in, redirect to login page
+        return redirect(url_for('login'))
+    
+    username = session['username']
+    users = User.load_users()
+    user = next((u for u in users if u['username'] == username), None) # dictionary object
+    
+
+    # Remove the bottle from the user's wishlist
+    bottle = Bottle.get_bottle_by_id(int(bottle_id))
+    User.amend_wishlist(user, bottle, False)
+
+
+    # Redirect back to the "My Wishlist" page
+    flash(f'{bottle['name']} removed from your wishlist.')
+    return redirect(url_for('search', query='', source='my_wishlist'))
+
+
+# For both collection and wishlist pages
+@app.route('/edit_note/<int:bottle_id>', methods=['POST'])
+def edit_note(bottle_id):
+    if not is_logged_in():  # If the user is not logged in, redirect to login page
+        return redirect(url_for('login'))
+
+    
+    note = request.form.get('note')  # Get the note from the form
+
+    username = session['username']
+    users = User.load_users()
+    user = next((u for u in users if u['username'] == username), None) # dictionary object
+
+    bottle = Bottle.get_bottle_by_id(int(bottle_id))
+
+
+    if "my_collection" in request.referrer:
+        User.amend_collection(user, bottle, note)  # Add the note to the bottle
+        flash(f'Note edited successfully for {bottle['name']}!', 'success')
+        return redirect(url_for('my_collection'))
+    
+    elif "my_wishlist" in request.referrer:
+        User.amend_wishlist(user, bottle, note)  # Add the note to the bottle
+        flash(f'Note edited successfully for {bottle['name']}!', 'success')
+        return redirect(url_for('my_wishlist'))
+
+
 
 
 
