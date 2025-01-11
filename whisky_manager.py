@@ -29,6 +29,7 @@ class User:
         self.username = username
         self.password = password
         self.collection = []
+        self.wishlist = []
         self.add_user()
 
     def add_user(self):
@@ -41,7 +42,7 @@ class User:
 
         # Append new user data
         if not any(user['username'] == self.username for user in users_data): # Check if the user does not exist
-            user = {"username": self.username, "password": self.password, "collection": self.collection}      
+            user = {"username": self.username, "password": self.password, "collection": self.collection, "wishlist": self.wishlist}      
             users_data.append(user)
             User.save_to_json(users_data)
 
@@ -82,6 +83,32 @@ class User:
         for user_data in users_data:
             if user_data['username'] == user["username"]:
                 user_data['collection'] = user["collection"]  # Update the user's collection
+        cls.save_to_json(users_data)  # Save the updated data
+
+    @classmethod
+    def amend_wishlist(cls, user, bottle, add):
+        """
+        Amend a user's wishlist.
+        """
+        # Add the bottle to the wishlist
+        if add == True:
+            user["wishlist"].append(bottle)
+
+        # Remove the bottle from the wishlist
+        elif add == False: 
+            user["wishlist"] = [b for b in user["wishlist"] if b["id"] != bottle["id"]]
+
+        # Edit a bottle's note
+        elif type(add) == str:
+            for b in user["wishlist"]:
+                if b["id"] == bottle["id"]:
+                    b["note"] = add
+                    break
+
+        users_data = cls.load_users()  # Load the users data
+        for user_data in users_data:
+            if user_data['username'] == user["username"]:
+                user_data['wishlist'] = user["wishlist"]  # Update the user's wishlist
         cls.save_to_json(users_data)  # Save the updated data
 
     @staticmethod

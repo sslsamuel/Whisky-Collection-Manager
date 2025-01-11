@@ -38,12 +38,6 @@
             margin: 0 auto;
             display: block;
         }
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
         .username {
             font-weight: bold;
             color: #ffffff;
@@ -53,12 +47,24 @@
             padding: 5px 10px;
         }
         .btn-custom {
-            margin-right: auto; /* Push "My Collection" button to the left */
+            margin-right: 0; /* Push collection buttons to the left */
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .top-bar-left {
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            gap: 8px; /* Add spacing between buttons */
         }
         .top-bar-right {
             display: flex;
             flex-direction: column; /* Stack username and logout vertically */
             align-items: flex-end; /* Align to the right */
+            flex: 1;
         }
         .flash-message {
             display: none; /* Hide the flash message by default */
@@ -94,9 +100,12 @@
 </head>
 <body>
     <div class="container">
-        <!-- Top bar with "My Collection" button on the left and username/logout on the right -->
+        <!-- Top bar with "My Collection" & "My Wishlist" buttons on the left and username/logout on the right -->
         <div class="top-bar">
-            <a href="{{ url_for('my_collection') }}" class="btn btn-primary btn-custom">My Collection</a>
+            <div class="top-bar-left">
+                <a style = "background-color: green; color: white;"href="{{ url_for('my_collection') }}" class="btn btn-custom">My Collection</a>
+                <a style = "background-color: goldenrod; color: white;" href="{{ url_for('my_wishlist') }}" class="btn btn-custom">My Wishlist</a>
+            </div>
             {% if session['username'] %}
                 <div class="top-bar-right">
                     <span class="username mb-2">
@@ -119,9 +128,6 @@
                 <div class="bottle-card" id="bottle-card-{{ bottle.id }}">
                     <!-- Flash messages will be here (JS creates them at the bottom of the card and CSS moves it up here) -->
 
-                    
-                
-
                     <img src="{{ bottle.image_url }}" alt="Image of {{ bottle.name }}">
                     <h5>{{ bottle.name }}</h5>
                     <div class="bottle-info">
@@ -130,8 +136,12 @@
                         <p><strong>Age:</strong> {{ bottle.age }} years</p>
                         <p><strong>ABV:</strong> {{ bottle.abv }}%</p>
                         <p><strong>Price:</strong> £{{ bottle.price }}</p>
+                        
                         <form class="add-bottle-form" action="/add_to_collection/{{ bottle.id }}" method="POST">
                             <button type="submit" class="btn btn-success">Add to Collection</button>
+                        </form>
+                        <form class="add-bottle-form" action="/add_to_wishlist/{{ bottle.id }}" method="POST">
+                            <button style="background-color:goldenrod; color:white"type="submit" class="btn mt-2">Add to Wishlist</button>
                         </form>
                     </div>
                 </div>
