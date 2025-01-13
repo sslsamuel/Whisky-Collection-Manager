@@ -118,13 +118,104 @@
         </div>
 
         <h1 class="text-center">My Wishlist</h1>
-        <form method="POST" class="mb-4">
-            <input type="text" name="search" class="form-control" placeholder="Search for a whisky..." value="{{ query }}">
-            <button type="submit" class="btn btn-primary mt-2">Search</button>
-        </form>
 
-        <!-- Flash Messages -->
-        {% with messages = get_flashed_messages(with_categories=true) %}
+
+        <div class="mb-4">
+            <!-- Search Bar -->
+            <form method="POST" class="mb-4">
+                <input type="text" name="search" class="form-control mb-2" placeholder="Search for a whisky..." value="{{ query }}">
+
+                    <!-- Hidden inputs for sort and filter values -->
+                <input type="hidden" name="sort_by" value="{{ request.args.get('sort_by', '') }}">
+                <input type="hidden" name="min_price" value="{{ request.args.get('min_price', '') }}">
+                <input type="hidden" name="max_price" value="{{ request.args.get('max_price', '') }}">
+                <input type="hidden" name="min_age" value="{{ request.args.get('min_age', '') }}">
+                <input type="hidden" name="max_age" value="{{ request.args.get('max_age', '') }}">
+                {% for distillery in request.args.getlist('distilleries') %}
+                    <input type="hidden" name="distilleries" value="{{ distillery }}">
+                {% endfor %}
+                <input type="hidden" name="source" value="my_wishlist">
+
+
+                <button type="submit" class="btn btn-primary mb-2">Search</button>
+            </form>
+        
+            <!-- Toggle Buttons -->
+            <div class="d-flex justify-content-start mb-3">
+                <button type="button" class="btn btn-secondary me-2" onclick="toggleMenu('sort-menu')">Sort</button>
+                <button type="button" class="btn btn-secondary" onclick="toggleMenu('filter-menu')">Filter</button>
+            </div>
+        
+            <!-- Sorting Menu -->
+            <form id="sort-menu" method="GET" class="mb-3" style="display: none;">
+                <label for="sort-by">Sort by:</label>
+
+                <!-- Hidden inputs for search and filter values -->
+                <input type="hidden" name="search" value="{{ request.args.get('search', '') }}">
+                <input type="hidden" name="min_price" value="{{ request.args.get('min_price', '') }}">
+                <input type="hidden" name="max_price" value="{{ request.args.get('max_price', '') }}">
+                <input type="hidden" name="min_age" value="{{ request.args.get('min_age', '') }}">
+                <input type="hidden" name="max_age" value="{{ request.args.get('max_age', '') }}">
+                {% for distillery in request.args.getlist('distilleries') %}
+                    <input type="hidden" name="distilleries" value="{{ distillery }}">
+                {% endfor %}
+                <input type="hidden" name="source" value="my_wishlist">
+
+
+                <select name="sort_by" id="sort-by" class="form-select" onchange="this.form.submit()">
+                    <option value="">Select...</option>
+                    <option value="name_asc" {% if request.args.get('sort_by') == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                    <option value="name_desc" {% if request.args.get('sort_by') == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                    <option value="price_low_high" {% if request.args.get('sort_by') == 'price_low_high' %}selected{% endif %}>Price (Low to High)</option>
+                    <option value="price_high_low" {% if request.args.get('sort_by') == 'price_high_low' %}selected{% endif %}>Price (High to Low)</option>
+                    <option value="age_low_high" {% if request.args.get('sort_by') == 'age_low_high' %}selected{% endif %}>Age (Low to High)</option>
+                    <option value="age_high_low" {% if request.args.get('sort_by') == 'age_high_low' %}selected{% endif %}>Age (High to Low)</option>
+                    <option value="abv_low_high" {% if request.args.get('sort_by') == 'abv_low_high' %}selected{% endif %}>ABV (Low to High)</option>
+                    <option value="abv_high_low" {% if request.args.get('sort_by') == 'abv_high_low' %}selected{% endif %}>ABV (High to Low)</option>
+                </select>
+            </form>
+        
+            <!-- Filtering Menu -->
+            <form id="filter-menu" method="GET" style="display: none;">
+
+                <!-- Hidden inputs for search and sort values -->
+                <input type="hidden" name="search" value="{{ request.args.get('search', '') }}">
+                <input type="hidden" name="sort_by" value="{{ request.args.get('sort_by', '') }}">
+                <input type="hidden" name="source" value="my_wishlist">
+
+                <label for="distillery-filter"><strong>Filter by Distillery:</strong></label>
+                <div id="distillery-filter" class="checkbox-list">
+                    {% for distillery in all_distilleries %}
+                        <div class="form-check">
+                            <input
+                                type="checkbox"
+                                class="form-check-input"
+                                name="distilleries"
+                                value="{{ distillery }}"
+                                id="distillery-{{ loop.index }}"
+                                {% if distillery in request.args.getlist('distilleries') %}checked{% endif %}
+                            >
+                            <label class="form-check-label" for="distillery-{{ loop.index }}">
+                                {{ distillery }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <label for="price-filter" class = "mt-2"><strong>Filter by Price (£):</strong></label>
+                <input type="number" name="min_price" placeholder="Min Price" value="{{ request.args.get('min_price', '') }}" class="form-control mb-2">
+                <input type="number" name="max_price" placeholder="Max Price" value="{{ request.args.get('max_price', '') }}" class="form-control mb-3">
+        
+                <label for="age-filter"><strong>Filter by Age (years):</strong></label>
+                <input type="number" name="min_age" placeholder="Min Age" value="{{ request.args.get('min_age', '') }}" class="form-control mb-2">
+                <input type="number" name="max_age" placeholder="Max Age" value="{{ request.args.get('max_age', '') }}" class="form-control mb-3">
+        
+                <button type="submit" class="btn btn-primary">Apply</button>
+            </form>
+        </div>
+
+         <!-- Flash Messages -->
+         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <div class="flash-messages">
                     {% for category, message in messages %}
@@ -215,6 +306,16 @@
             charCount.textContent = `${90 - textarea.value.length} characters remaining`;
         }
 
+
+        // JavaScript to toggle sorting and filtering menu
+        function toggleMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            if (menu.style.display === "none" || menu.style.display === "") {
+                menu.style.display = "block";
+            } else {
+                menu.style.display = "none";
+            }
+        }
     </script> 
     
     

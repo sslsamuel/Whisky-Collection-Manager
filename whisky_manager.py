@@ -11,18 +11,92 @@ class WhiskyManager:
             self.data = {}
         return self.data
     
-    # def save_data(self):
-    #     with open('whisky.json', 'w') as file:
-    #         json.dump(self.data, file, indent=4)
+    @classmethod
+    def save_data(self, data):
+        with open('whisky.json', 'w') as file:
+            json.dump(data, file, indent=4)
 
     @classmethod
     def search_bottles(cls, query, collection=False):
+        """
+        Return list of bottles matching user's query
+        """
+
+        # 'collection' can be the actual user's collection or also the wishlist, depending on what is passed through
         if collection != False:
             return [bottle for bottle in collection if query.lower() in bottle["name"].lower()]
+        collection = cls.load_data()
+        return [bottle for bottle in collection if query.lower() in bottle["name"].lower()]
+    
+    @classmethod
+    def sort_bottles(cls, sort_by, collection=False):
+        """
+        Sort bottles by a specified key.
+        """
+        # 'collection' can be the actual user's collection or also the wishlist, depending on what is passed through
+
+        if collection == False:
+            collection = cls.load_data()
+
+        # Sort collection
+        if sort_by == 'name_asc':
+            sorted_collection = sorted(collection, key=lambda b: b['name'].lower())
+        elif sort_by == 'name_desc':
+            sorted_collection = sorted(collection, key=lambda b: b['name'].lower(), reverse=True)
+        elif sort_by == 'price_low_high':
+            sorted_collection = sorted(collection, key=lambda b: b['price'])
+        elif sort_by == 'price_high_low':
+            sorted_collection = sorted(collection, key=lambda b: b['price'], reverse=True)
+        elif sort_by == 'age_low_high':
+            sorted_collection = sorted(collection, key=lambda b: b['age'])
+        elif sort_by == 'age_high_low':
+            sorted_collection = sorted(collection, key=lambda b: b['age'], reverse=True)
+        elif sort_by == 'abv_low_high':
+            sorted_collection = sorted(collection, key=lambda b: b['abv'])
+        elif sort_by == 'abv_high_low':
+            sorted_collection = sorted(collection, key=lambda b: b['abv'], reverse=True)
+        elif sort_by == 'rating_low_high':
+            sorted_collection = sorted(collection, key=lambda b: b['rating'])
+        elif sort_by == 'rating_high_low':
+            sorted_collection = sorted(collection, key=lambda b: b['rating'], reverse=True)
+        else:
+            sorted_collection = collection  # Default to no sorting
+
+        return sorted_collection
+
+           
+
+    @classmethod
+    def filter_bottles(cls, min_price, max_price, min_age, max_age, distilleries, collection=False):
+        """
+        Filter bottles by specified criteria.
+        """
+        if collection == False:
+            collection = cls.load_data()
+
+        filtered_collection = collection
+
+        if min_price is not None:
+            filtered_collection = [b for b in filtered_collection if b['price'] >= min_price]
+        if max_price is not None:
+            filtered_collection = [b for b in filtered_collection if b['price'] <= max_price]
+        if min_age is not None:
+            filtered_collection = [b for b in filtered_collection if b['age'] >= min_age]
+        if max_age is not None:
+            filtered_collection = [b for b in filtered_collection if b['age'] <= max_age]
+        if distilleries:
+            filtered_collection = [b for b in filtered_collection if b['distillery'] in distilleries]
+
+        return filtered_collection
+    
+    @classmethod
+    def all_distilleries(cls):
+        """
+        Returns all distilleries in whisky.json
+        """
         data = cls.load_data()
-        return [bottle for bottle in data if query.lower() in bottle["name"].lower()]
-
-
+        return sorted({b['distillery'] for b in data}) # {} creates a set to avoid duplicated
+        
 class User:
 
     def __init__(self, username, password):
@@ -58,8 +132,9 @@ class User:
         Amend a user's collection.
         """
         # Add the bottle to the collection
-        if add == True:
+        if add == True and type(add) == bool: # if rating is 1, avoid this because 1 is True
             user["collection"].append(bottle)
+
 
         # Remove the bottle from the collection
         elif add == False: 
@@ -124,14 +199,30 @@ class User:
   
 class Bottle(WhiskyManager):
 
-    def __init__(self, bottle_id, name, distillery, age, abv, price, image_url):
-        self.id = bottle_id
-        self.name = name
-        self.distillery = distillery
-        self.age = age
-        self.abv = abv
-        self.price = price
-        self.image_url = image_url
+    def __init__(self, name, distillery, bottle_type, age, abv, price, image_url):
+
+        bottles = WhiskyManager.load_data()
+        # Generate the next available ID
+        next_id = max([bottle['id'] for bottle in bottles], default=0) + 1
+
+        # Create a new bottle dictionary
+        new_bottle = {
+            'id': next_id,
+            'name': name,
+            'distillery': distillery,
+            'type': bottle_type,
+            'age': age,
+            'abv': abv,
+            'price': price,
+            'image_url': image_url,
+            'note': '',
+            'rating': 0
+        }
+        bottles.append(new_bottle)
+        super().save_data(bottles)
+
+        
+
 
     @classmethod
     def get_bottle_by_id(cls, bottle_id):
