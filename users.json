@@ -4,6 +4,30 @@
         "password": "123",
         "collection": [
             {
+                "id": 2,
+                "name": "Ardbeg 1975 30 Year Old",
+                "distillery": "Ardbeg",
+                "type": "Single Malt",
+                "age": 30,
+                "abv": 46,
+                "price": 800,
+                "image_url": "https://img.thewhiskyexchange.com/700/abgdlp1975v2.jpg?v=202407241",
+                "note": "",
+                "rating": 4
+            },
+            {
+                "id": 1,
+                "name": "Ardbeg 10 Year Old",
+                "distillery": "Ardbeg",
+                "type": "Single Malt",
+                "age": 10,
+                "abv": 46,
+                "price": 55,
+                "image_url": "https://findlayswine.co.uk/2405-large_default/ardbeg-10-year-old-70cl.jpg",
+                "note": "",
+                "rating": 1
+            },
+            {
                 "id": 6,
                 "name": "Balvenie 12 Year Old DoubleWood",
                 "distillery": "Balvenie",
@@ -12,8 +36,20 @@
                 "abv": 40,
                 "price": 60,
                 "image_url": "https://www.houseofmalt.co.uk/wp-content/uploads/2018/06/Balvenie-12-Year-Old-Doublewood-Speyside-Single-Malt-Whisky.jpg",
-                "note": "love this so much",
-                "rating": 0
+                "note": "",
+                "rating": 2
+            },
+            {
+                "id": 8,
+                "name": "Balvenie 50 Year Old",
+                "distillery": "Balvenie",
+                "type": "Single Malt",
+                "age": 50,
+                "abv": 44.3,
+                "price": 25000,
+                "image_url": "https://img.thewhiskyexchange.com/700/balob.50yov6.jpg?v=202407241",
+                "note": "",
+                "rating": 5
             }
         ],
         "wishlist": [
@@ -27,6 +63,42 @@
                 "price": 60,
                 "image_url": "https://www.houseofmalt.co.uk/wp-content/uploads/2018/06/Balvenie-12-Year-Old-Doublewood-Speyside-Single-Malt-Whisky.jpg",
                 "note": "Buying this for my best friend",
+                "rating": 0
+            },
+            {
+                "id": 33,
+                "name": "Jack Daniel's Sinatra Select",
+                "distillery": "Jack Daniel's",
+                "type": "Tennessee Whiskey",
+                "age": 7,
+                "abv": 45,
+                "price": 150,
+                "image_url": "https://www.masterofmalt.com/whiskies/jack-daniels/jack-daniels-sinatra-select-whiskey.jpg?alt=1&w=700&h=1002&b=0xFFFFFF&q=100",
+                "note": "",
+                "rating": 0
+            },
+            {
+                "id": 5,
+                "name": "Ardbeg 19 Year Old Traigh Bhan Batch 2",
+                "distillery": "Ardbeg",
+                "type": "Single Malt",
+                "age": 19,
+                "abv": 46.2,
+                "price": 250,
+                "image_url": "https://regalwhisky.com/cdn/shop/products/main_2608_Ardbeg-19-Year-Old-Traigh-Bhan-Batch.jpg?v=1677084965&width=500",
+                "note": "",
+                "rating": 0
+            },
+            {
+                "id": 8,
+                "name": "Balvenie 50 Year Old",
+                "distillery": "Balvenie",
+                "type": "Single Malt",
+                "age": 50,
+                "abv": 44.3,
+                "price": 25000,
+                "image_url": "https://img.thewhiskyexchange.com/700/balob.50yov6.jpg?v=202407241",
+                "note": "",
                 "rating": 0
             }
         ]
