@@ -19,25 +19,42 @@ def search():
         query = request.args.get('search')
     query = query if query else ""  # If query is None, set it to an empty string
 
+    
+    # Retrieve sorting and filtering arguments
+    sort_by = request.args.get('sort_by', None)
+    min_price = request.args.get('min_price', type=float)
+    max_price = request.args.get('max_price', type=float)
+    min_age = request.args.get('min_age', type=int)
+    max_age = request.args.get('max_age', type=int)
+    distilleries = request.args.getlist('distilleries')
+
     source = request.args.get('source', None)
+
     if source == None:
         results = WhiskyManager.search_bottles(query)
-
-        return render_template('search.html', results=results, query=query)
+        results = WhiskyManager.sort_bottles(sort_by, results)
+        results = WhiskyManager.filter_bottles(min_price, max_price, min_age, max_age, distilleries, results)
+        return render_template('search.html', results=results, query=query, all_distilleries = WhiskyManager.all_distilleries())
     
     elif source == 'my_collection':
         username = session['username']
         users = User.load_users()
         user = next((u for u in users if u['username'] == username), None)
         results = WhiskyManager.search_bottles(query, user['collection'])
-        return render_template('collection.html', results=results, query=query)
+        results = WhiskyManager.sort_bottles(sort_by, results)
+        results = WhiskyManager.filter_bottles(min_price, max_price, min_age, max_age, distilleries, results)
+        return render_template('collection.html', results=results, query=query, all_distilleries = WhiskyManager.all_distilleries())
     
     elif source == 'my_wishlist':
         username = session['username']
         users = User.load_users()
         user = next((u for u in users if u['username'] == username), None)
         results = WhiskyManager.search_bottles(query, user['wishlist'])
-        return render_template('wishlist.html', results=results, query=query)
+        results = WhiskyManager.sort_bottles(sort_by, results)
+        results = WhiskyManager.filter_bottles(min_price, max_price, min_age, max_age, distilleries, results)
+        return render_template('wishlist.html', results=results, query=query, all_distilleries = WhiskyManager.all_distilleries())
+    
+
     
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -163,7 +180,7 @@ def edit_rating(bottle_id):
 
     bottle = Bottle.get_bottle_by_id(int(bottle_id))
 
-    User.amend_collection(user, bottle, int(rating))  # Edit the rating of the bottle
+    User.amend_collection(user, bottle, int(rating))  # Edit the rating of the bottle, convert to int to avoid editing note
     
     flash(f'Rating edited successfully to {rating} stars for {bottle['name']}!', 'success')
     return redirect(url_for('my_collection'))
@@ -251,8 +268,27 @@ def edit_note(bottle_id):
         flash(f'Note edited successfully for {bottle['name']}!', 'success')
         return redirect(url_for('my_wishlist'))
 
+@app.route('/create_bottle', methods=['POST'])
+def create_bottle():
+    """Handle the creation of a new bottle."""
+
+    # Extract data from the request
+    name = request.form.get('name')
+    distillery = request.form.get('distillery')
+    bottle_type = request.form.get('type')
+    age = request.form.get('age', type=int)
+    abv = request.form.get('abv', type=float)
+    price = request.form.get('price', type=float)
+    image_url = request.form.get('image_url')
 
 
+    Bottle(name, distillery, bottle_type, age, abv, price, image_url)
+
+    return redirect(url_for('search'))
+
+
+    
+    
 
 
 
